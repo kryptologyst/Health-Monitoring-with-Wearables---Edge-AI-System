@@ -1,0 +1,37 @@
+# NVIDIA Jetson Nano Configuration for Health Monitoring
+device:
+  name: "jetson_nano"
+  architecture: "arm64"
+  cpu_cores: 4
+  memory_gb: 4
+  gpu_cores: 128
+  
+# Model constraints
+model:
+  max_input_size: 2048
+  max_batch_size: 4
+  supported_precisions: ["fp32", "fp16", "int8"]
+  max_model_size_mb: 50
+  
+# Performance targets
+performance:
+  target_latency_ms: 50
+  target_throughput_fps: 20
+  max_memory_usage_mb: 1000
+  max_cpu_usage_percent: 70
+  max_gpu_usage_percent: 60
+  
+# Hardware acceleration
+acceleration:
+  use_gpu: true
+  use_npu: false
+  use_tensorrt: true
+  use_cuda: true
+  
+# Edge runtime settings
+runtime:
+  framework: "tensorrt"
+  fallback_framework: "tflite"
+  num_threads: 4
+  enable_xnnpack: true
+  enable_gpu_delegate: true

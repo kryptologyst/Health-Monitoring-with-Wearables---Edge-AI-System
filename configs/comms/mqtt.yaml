@@ -1,0 +1,42 @@
+# MQTT Configuration for Health Monitoring
+mqtt:
+  # Broker settings
+  broker:
+    host: "localhost"
+    port: 1883
+    keepalive: 60
+    username: null
+    password: null
+    
+  # Topics
+  topics:
+    sensor_data: "health/sensors/{device_id}"
+    alerts: "health/alerts/{device_id}"
+    status: "health/status/{device_id}"
+    commands: "health/commands/{device_id}"
+    
+  # QoS levels
+  qos:
+    sensor_data: 0
+    alerts: 1
+    status: 1
+    commands: 2
+    
+  # Message settings
+  message:
+    max_size_bytes: 1024
+    compression: false
+    encryption: false
+    
+  # Retry and reliability
+  retry:
+    max_attempts: 3
+    backoff_factor: 2.0
+    timeout_seconds: 30
+    
+  # Edge-specific settings
+  edge:
+    offline_cache_size: 1000
+    sync_interval_seconds: 60
+    batch_messages: true
+    max_batch_size: 10

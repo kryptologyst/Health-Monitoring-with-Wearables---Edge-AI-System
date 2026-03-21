@@ -1,0 +1,34 @@
+# Raspberry Pi 4B Configuration for Health Monitoring
+device:
+  name: "raspberry_pi_4b"
+  architecture: "arm64"
+  cpu_cores: 4
+  memory_gb: 4
+  storage_gb: 32
+  
+# Model constraints
+model:
+  max_input_size: 1024
+  max_batch_size: 1
+  supported_precisions: ["fp32", "int8"]
+  max_model_size_mb: 10
+  
+# Performance targets
+performance:
+  target_latency_ms: 100
+  target_throughput_fps: 10
+  max_memory_usage_mb: 500
+  max_cpu_usage_percent: 80
+  
+# Hardware acceleration
+acceleration:
+  use_gpu: false
+  use_npu: false
+  use_neon: true
+  
+# Edge runtime settings
+runtime:
+  framework: "tflite"
+  num_threads: 2
+  enable_xnnpack: true
+  enable_gpu_delegate: false
